@@ -5,7 +5,7 @@ Function htmlSpecialChars(ByVal str)
 
     if len( str ) > 0 then
         str = Server.HTMLEncode(str)
-        str = Replace(str,"'","'")
+        str = Replace(str,"'","&#039;")
     end if
     htmlspecialchars = str
 
