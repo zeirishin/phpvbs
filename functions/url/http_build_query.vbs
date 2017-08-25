@@ -1,4 +1,16 @@
-
+<%
+'=======================================================================
+'  URL エンコードされたクエリ文字列を生成する
+'=======================================================================
+'【引数】
+'  formdata       = array   配列もしくはオブジェクト。
+'  numeric_prefix = string  配列の要素に対する数値インデックスの前にこれが追加されます。
+'  arg_separator  = string  区分のためのセパレータとして使用されます。
+'【戻り値】
+'  URL エンコードされた文字列を返します。
+'【処理】
+'  ・与えられた連想配列 (もしくは添字配列) から URL エンコードされたクエリ文字列を生成します。
+'=======================================================================
 Function http_build_query(formdata , numeric_prefix , arg_separator )
 
     If Not isArray(formdata) and Not isObject(formdata) Then Exit Function
@@ -59,3 +71,4 @@ Function http_build_query(formdata , numeric_prefix , arg_separator )
     http_build_query = url
 
 End Function
+%>
