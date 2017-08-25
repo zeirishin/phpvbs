@@ -1,4 +1,27 @@
+<%
+'/**
+' *
+' * php.asp :  Rapid Development Framework
+' * Copyright 2005-2017, zeirishin
+' *
+' * @filesource
+' * @copyright		Copyright 2005-2017, zeirishin
+' * @link			http://blog.verygoodtown.com/
+' * @package		php.vbs
+' */
 
+'=======================================================================
+'XMLファイルをパースし、配列に代入する
+'=======================================================================
+'【引数】
+'  filename     = String XML ファイルへのパス。
+'  encode       = String XML ファイルの文字コード。
+'【戻り値】
+'  ドキュメント内のデータを返します。
+'  エラー時には エラーメッセージを返します。
+'【処理】
+'  ・指定したファイルの中の整形式 XML 配列に変換します。
+'=======================================================================
 Function simplexml_load_file(filename,encode)
 
     Dim objDoc,result
@@ -33,7 +56,7 @@ Function simplexml_load_file(filename,encode)
     If rtResult = True Then
         call simplexml_parse(objDoc.childNodes, ret)
     Else
-        ret("error") = "Could not read xml."
+        ret("error") = "XMLを取得できません。"
     End If
 
     Set simplexml_load_file = ret
@@ -71,7 +94,7 @@ Function simplexml_parse(objNode,ByRef ret)
 
                 For Each att IN obj.attributes
                     ret(objData & "_attr").Add _
-                        preg_replace("/(.+)=".*"/","$1",att.xml), att.value
+                        preg_replace("/(.+)="".*""/","$1",att.xml), att.value
                 Next
             End If
         End If
@@ -104,3 +127,5 @@ Function simplexml_parse(objNode,ByRef ret)
 
     Next
 End Function
+
+%>
