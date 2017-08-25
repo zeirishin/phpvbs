@@ -1,7 +1,20 @@
+<%
+'=======================================================================
+'変数に関する情報をダンプする
+'=======================================================================
+'【引数】
+'  val   = mixed 破棄する変数。
+'【戻り値】
+'  値を返しません。
+'【処理】
+'  ・この関数は、指定した式に関してその型や値を含む構造化された情報を 返します。
+'  ・配列の場合、その構造を表示するために各値について再帰的に 探索されます。
+'=======================================================================
 Sub var_dump(expression)
     var_dump_helper expression,0
 End Sub
 
+'***************************
 Sub var_dump_helper(expression,tab)
 
     If VarType(tab) <> 2 Then tab = 0
@@ -25,11 +38,11 @@ Sub var_dump_helper(expression,tab)
                 Response.Write vbTab & "[] => "
                 call var_dump_helper(a,tab + 1)
             ElseIf isArray(expression(a)) or isObject( expression(a) ) Then
-                Response.Write vbTab & "[" & a & "] => "
+                Response.Write vbTab & "[""" & a & """] => "
                 call var_dump_helper(expression(a),tab + 1)
 
             Else
-               Response.Write vbTab & "[" & a & "]" & " => " & _
+               Response.Write vbTab & "[""" & a & """]" & " => " & _
                               gettype(expression(a)) & "(" & expression(a) & ")" & vbCrLf
             End If
         Next
@@ -53,3 +66,4 @@ Sub var_dump_helper(expression,tab)
     Response.Write strTab & ")" & vbCrLf
 
 End Sub
+%>
