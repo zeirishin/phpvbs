@@ -1,15 +1,4 @@
 <%
-'/**
-' *
-' * php.asp :  Rapid Development Framework
-' * Copyright 2005-2017, zeirishin
-' *
-' * @filesource
-' * @copyright		Copyright 2005-2017, zeirishin
-' * @link			http://blog.verygoodtown.com/
-' * @package		php.vbs
-' */
-
 '=======================================================================
 'XMLファイルをパースし、配列に代入する
 '=======================================================================
@@ -127,5 +116,4 @@ Function simplexml_parse(objNode,ByRef ret)
 
     Next
 End Function
-
 %>
