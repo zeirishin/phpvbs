@@ -18,4 +18,25 @@ Function mb_convert_encoding(str,to_encoding,from_encoding)
                           mb_convert_encoding_helper(to_encoding),_
                           mb_convert_encoding_helper(from_encoding))
 End Function
+    
+'*******************************************
+Function mb_convert_encoding_helper(encoding)
+
+    Dim tmp
+    Select Case lcase(encoding)
+    Case "shift_jis","sjis"
+        tmp = 1
+    Case "euc","euc-jp"
+        tmp = 2
+    Case "jis"
+        tmp = 3
+    Case "ucs2"
+        tmp = 4
+    Case "utf-8","utf8"
+        tmp = 5
+    Case "auto"
+        tmp = 0
+    End Select
+
+End Function
 %>
