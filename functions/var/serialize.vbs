@@ -1,3 +1,16 @@
+<%
+'=======================================================================
+'値の保存可能な表現を生成する
+'=======================================================================
+'【引数】
+'  val   = mixed    シリアル化する値。
+'【戻り値】
+'  val  の保存可能なバイトストリーム表現を含む文字列を返します。 
+'【処理】
+'  ・ 値の保存可能な表現を生成します。
+'  ・ 型や構造を失わずに ASP の値を保存または渡す際に有用です。
+'  ・ シリアル化された文字列を ASP の値に戻すには、 unserialize() を使用してください。 
+'=======================================================================
 Function serialize(ByVal val)
 
     Dim strstrType
@@ -17,7 +30,7 @@ Function serialize(ByVal val)
         Case "vbInteger","vbLong","vbSingle","vbDouble","vbCurrency"
             str = [?]([==](int(val),val),"i","d") & ":" & val
         Case "vbDate","vbString","vbVariant"
-            str = "s:" & len(val) & ":" & val & ""
+            str = "s:" & len(val) & ":""" & val & """"
         Case "vbArray"
             str = "a"
 
@@ -49,3 +62,4 @@ Function serialize(ByVal val)
 
     serialize = str
 End Function
+%>
