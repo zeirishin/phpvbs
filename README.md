@@ -1,8 +1,6 @@
 # phpvbs
-php program for "Classic asp"  and "vbs"
 
-
-php.vbsは、PHPの関数をVB,ASPで使うためのスクリプトです。
+php.vbsは、PHPの関数をVBScriptおよびClassic ASPで使うためのスクリプトです。
 
 これは現在PHPでの開発が主流になってきている中で、VBでの開発にPHPのような便利な関数があれば開発効率が上がると考えて作成しました。
 
