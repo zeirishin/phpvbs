@@ -1,3 +1,17 @@
+<%
+'=======================================================================
+' 文字列の soundex キーを計算する
+'=======================================================================
+'【引数】
+'  format   = string 入力文字列。
+'【戻り値】
+'  メタ文字をクォートした文字列を返します。
+'【処理】
+'  ・ str  の soundex キーを計算します。
+'  ・ soundex キーには、似たような発音の単語に関して同じ soundex キーが生成されるという特性があります。 このため、発音は知っているが、スペルがわからない場合に、 データベースを検索することを容易にすることができます。
+'  ・ soundex 関数は、ある文字から始まる 4 文字の文字列を返します。
+'  ・ この soundex 関数についての説明は、Donald Knuth の "The Art Of Computer Programming, vol. 3: Sorting And Searching", Addison-Wesley (1973), pp. 391-392 にあります。 
+'=======================================================================
 Function soundex(str)
 
     Dim i,j, l, r, p, m, s
@@ -12,7 +26,7 @@ Function soundex(str)
     m.add "R", 6
 
     s = Ucase( str )
-    s = preg_replace("/[^A-Z]/",",s,",")
+    s = preg_replace("/[^A-Z]/","",s,"","")
     s = str_split(s,1)
     r = array( array_shift(s) )
 
@@ -32,6 +46,7 @@ Function soundex(str)
     Dim newArray()
     ReDim newArray(p - (uBound(r)+1))
 
-    soundex = join(r,") & join( newArray, "0" )
+    soundex = join(r,"") & join( newArray, "0" )
 
 End Function
+%>
